@@ -1,0 +1,2 @@
+# penggajian
+gajian
