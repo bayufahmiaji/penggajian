@@ -66,7 +66,7 @@ public class DaftarTambah extends javax.swing.JFrame {
         });
         popup.add(mnDelete);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));

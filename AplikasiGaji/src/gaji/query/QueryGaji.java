@@ -137,43 +137,9 @@ public class QueryGaji implements InterfaceGaji {
     }
 
     @Override
-    public Gaji getOneGajiByName(String nama_karyawan) {
-        Gaji output = null;
-        String sql = "Select * from gaji where nama_karyawan=?";
-        try{
-            if(SQLConnection.getConnection()==null){
-                return null;
-            } else {
-                PreparedStatement statement = conn.prepareStatement(sql);
-                statement.setString(1, nama_karyawan);
-                
-                ResultSet rs = statement.executeQuery();
-                while(rs.next()){
-                    output = new Gaji(
-                    rs.getInt(1),
-                    rs.getString(2),
-                    rs.getDouble(3),
-                    rs.getDouble(4),
-                    rs.getDouble(5),
-                    rs.getDouble(6),
-                    rs.getDouble(7),
-                    rs.getDouble(8),
-                    rs.getDouble(9),
-                    rs.getDouble(10),
-                    rs.getDouble(11),
-                    rs.getDouble(12));
-                } statement.close();
-            }
-            } catch (SQLException e) {
-            java.util.logging.Logger.getLogger(QueryGaji.class.getName()).log(Level.SEVERE, null, e);
-        }
-            return output;
-    }
-
-    @Override
-    public List<Gaji> getAllGajiByName(String nama_karyawan) {
-        List<Gaji> listGaji = new ArrayList<>();
-        String sql = "Select * from gaji where nama_karyawan slike %?%";
+    public List<Gaji> getgajibyid(int id_urutan) {
+       List<Gaji> listGaji = new ArrayList<>();
+        String sql = "Select * from gaji where id_urutan="+id_urutan+"";
         try {
             if (SQLConnection.getConnection()==null){
                 return null;
@@ -195,7 +161,8 @@ public class QueryGaji implements InterfaceGaji {
                     rs.getDouble(9),
                     rs.getDouble(10),
                     rs.getDouble(11),
-                    rs.getDouble(12));
+                    rs.getDouble(12)        
+                    );
                     listGaji.add(g);
                 }
                 statement.close();
@@ -205,5 +172,7 @@ public class QueryGaji implements InterfaceGaji {
         }
         return listGaji;
     }
+
+    
     
 }

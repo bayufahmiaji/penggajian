@@ -19,7 +19,9 @@ public class ControllerGaji {
     public List<Gaji> getAllGaji(){
         return queryGaji.getAllGaji();
     }
-    
+    public List<Gaji> getGajibyId(int id){
+        return queryGaji.getgajibyid(id);
+    }
     public boolean insertGaji(int id_urutan, String name, double gaji, double gaji_pokok, double tunjangan_jabatan, double tunjangan_kedisiplinan,
             double transport, double tunjangan_prestasi, double tunjangan_pph, double bpjs_kesehatan, double bpjs_ketenagakerjaan, double lain){
         if(name.isEmpty()){

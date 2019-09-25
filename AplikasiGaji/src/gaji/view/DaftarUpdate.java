@@ -87,7 +87,7 @@ public class DaftarUpdate extends javax.swing.JFrame {
         });
         popup.add(mnDelete);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -321,7 +321,7 @@ public class DaftarUpdate extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 255, 255));
 
-        tableKaryawan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tableKaryawan.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
         tableKaryawan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -586,10 +586,6 @@ public class DaftarUpdate extends javax.swing.JFrame {
     
     private void setLabel(){
         double gaji = Double.parseDouble(txtGaji.getText());
-        double gaji_pokok = Double.parseDouble(lblGapok.getText());
-        double tunjangan_jabatan = Double.parseDouble(lblJabatan.getText());
-        double tunjangan_kedisiplinan = Double.parseDouble(lblDisiplin.getText());
-        double transport = Double.parseDouble(lblTrans.getText());
         double gapok = gaji * 0.3;
         double jabatan = gaji * 0.45;
         double kedisiplinan = gaji * 0.15;

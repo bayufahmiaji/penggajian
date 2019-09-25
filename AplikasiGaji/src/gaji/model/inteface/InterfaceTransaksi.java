@@ -18,7 +18,8 @@ public interface InterfaceTransaksi {
     public boolean delete(int id_urutan);
     
     public List<Transaksi> getAllTransaksi();
-    public Transaksi getOneTransaksiById(int id_urutan);
+    public List<Transaksi> getTransaksiByID(int id_urutan);
+   
     
 
 }

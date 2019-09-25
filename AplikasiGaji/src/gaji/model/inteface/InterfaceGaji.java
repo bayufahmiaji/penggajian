@@ -18,8 +18,6 @@ public interface InterfaceGaji {
     public boolean delete(String nama_karyawan);
     
     public List<Gaji> getAllGaji();
+    public List<Gaji> getgajibyid(int id_urutan);
     
-    public Gaji getOneGajiByName(String nama_karyawan);
-    
-    public List<Gaji> getAllGajiByName(String nama_karyawan);
 }

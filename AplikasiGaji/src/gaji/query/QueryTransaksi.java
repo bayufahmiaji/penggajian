@@ -121,19 +121,19 @@ public class QueryTransaksi implements InterfaceTransaksi {
     }
 
     @Override
-    public Transaksi getOneTransaksiById(int id_urutan) {
-        Transaksi output = null;
-        String sql = "Select * from transaksi where id_urutan=?";
+    public List<Transaksi> getTransaksiByID(int id_urutan) {
+       List<Transaksi> listTransaksi = new ArrayList<>();
+        String sql = "Select * from transaksi where id_urutan="+id_urutan+"";
         try{
             if(SQLConnection.getConnection()==null){
                 return null;
             } else {
                 PreparedStatement statement = conn.prepareStatement(sql);
-                statement.setInt(1, id_urutan);
+                
                 
                 ResultSet rs = statement.executeQuery();
                 while(rs.next()){
-                    output = new Transaksi(rs.getInt(1),
+                    Transaksi t = new Transaksi(rs.getInt(1),
                     rs.getDouble(2),
                     rs.getDouble(3),
                     rs.getDouble(4),
@@ -141,12 +141,14 @@ public class QueryTransaksi implements InterfaceTransaksi {
                     rs.getDouble(6),
                     rs.getDouble(7),
                     rs.getDouble(8));
+                    
+                    listTransaksi.add(t);
                 } statement.close();
             }
             } catch (SQLException e) {
             java.util.logging.Logger.getLogger(QueryTransaksi.class.getName()).log(Level.SEVERE, null, e);
         }
-            return output;
+            return listTransaksi;
     }
     
 }

@@ -20,6 +20,10 @@ public class ControllerTransaksi {
         return queryTransaksi.getAllTransaksi();
     }
     
+    public List<Transaksi> getDataById(int id_urutan){
+        return queryTransaksi.getTransaksiByID(id_urutan);
+    }
+    
     public boolean insertTransaksi(int id_urutan,double izin, double alfa,double terlambat,double kesehatan,double ketenagakerjaan,double pph,double lain){
         if(id_urutan==0){
             return false;
