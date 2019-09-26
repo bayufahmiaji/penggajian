@@ -8,6 +8,7 @@ package gaji.view;
 import gaji.controller.ControllerGaji;
 import gaji.controller.ControllerKaryawan;
 import gaji.controller.ControllerPotongan;
+import gaji.controller.ControllerReport;
 import gaji.controller.ControllerTransaksi;
 import java.util.List;
 import java.util.Calendar;
@@ -27,6 +28,7 @@ public class SlipGaji extends javax.swing.JFrame {
     ControllerTransaksi controllertransaksi = new ControllerTransaksi();
     ControllerGaji controllergaji = new ControllerGaji();
     ControllerPotongan Controllerpotongan = new ControllerPotongan();
+    ControllerReport controllerrepport = new ControllerReport();
     /**
      * Creates new form SlipGaji
      */
@@ -128,6 +130,7 @@ public class SlipGaji extends javax.swing.JFrame {
         lbltotalgaji = new javax.swing.JLabel();
         lbltotalpot = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
 
         jLabel21.setText("Nama");
 
@@ -676,6 +679,13 @@ public class SlipGaji extends javax.swing.JFrame {
             }
         });
 
+        btnSimpan.setText("Save");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -685,7 +695,10 @@ public class SlipGaji extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSimpan)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -696,7 +709,9 @@ public class SlipGaji extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnSimpan))
                 .addContainerGap())
         );
 
@@ -783,6 +798,20 @@ public class SlipGaji extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        int id = Integer.parseInt(lblurut.getText());
+        String nama = lblnama.getText();
+        double totalgaji = Double.parseDouble(lbltotalgaji.getText());
+        double totalpotongan = Double.parseDouble(lbltotalpot.getText());
+        double gajibersih = Double.parseDouble(lblgajibersih.getText());
+        
+        if(btnSimpan.getText().equals("Save")){
+            if(controllerrepport.insertReport(id, nama,totalgaji,totalpotongan,gajibersih)){
+                
+            } 
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
     private void calendar(){
         String[] monthname = {"Januari","Februari","Maret","APril","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"};
         Calendar now = Calendar.getInstance();
@@ -922,6 +951,7 @@ public class SlipGaji extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
+    private javax.swing.JButton btnSimpan;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
     private javax.swing.JDialog jDialog1;
